@@ -3,7 +3,7 @@ package com.egf.payment.account.dao.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class EgfAccountEntity {
+public class AccountEntity {
     private String accountNo;
 
     private String accountType;

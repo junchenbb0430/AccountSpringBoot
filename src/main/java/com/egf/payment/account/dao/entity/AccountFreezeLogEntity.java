@@ -3,7 +3,7 @@ package com.egf.payment.account.dao.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class EgfAccountFreezeLogEntity {
+public class AccountFreezeLogEntity {
     private String freezeIdLog;
 
     private String accountNo;

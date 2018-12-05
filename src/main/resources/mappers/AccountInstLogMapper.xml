@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.egf.payment.account.dao.mapper.EgfAccountInstLogMapper">
-  <resultMap id="BaseResultMap" type="com.egf.payment.account.dao.entity.EgfAccountInstLogEntity">
+<mapper namespace="com.egf.payment.account.dao.mapper.AccountInstLogMapper">
+  <resultMap id="BaseResultMap" type="com.egf.payment.account.dao.entity.AccountInstLogEntity">
     <id column="INST_ACCOUNT_LOG_ID" jdbcType="VARCHAR" property="instAccountLogId" />
     <result column="INST_ACCOUNT_NO" jdbcType="VARCHAR" property="instAccountNo" />
     <result column="TRANS_DATE" jdbcType="VARCHAR" property="transDate" />
@@ -44,7 +44,7 @@
     delete from egf_account_inst_log
     where INST_ACCOUNT_LOG_ID = #{instAccountLogId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.egf.payment.account.dao.entity.EgfAccountInstLogEntity">
+  <insert id="insert" parameterType="com.egf.payment.account.dao.entity.AccountInstLogEntity">
     insert into egf_account_inst_log (INST_ACCOUNT_LOG_ID, INST_ACCOUNT_NO, 
       TRANS_DATE, TRANS_CODE, SUB_TRANS_CODE, 
       TRANS_BALANCE, TRANS_AMOUNT, BALANCE, 
@@ -64,7 +64,7 @@
       #{outOrderNo,jdbcType=VARCHAR}, #{actionType,jdbcType=VARCHAR}, #{beyondOrderNo,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.egf.payment.account.dao.entity.EgfAccountInstLogEntity">
+  <insert id="insertSelective" parameterType="com.egf.payment.account.dao.entity.AccountInstLogEntity">
     insert into egf_account_inst_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="instAccountLogId != null">
@@ -215,7 +215,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.egf.payment.account.dao.entity.EgfAccountInstLogEntity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.egf.payment.account.dao.entity.AccountInstLogEntity">
     update egf_account_inst_log
     <set>
       <if test="instAccountNo != null">
@@ -290,7 +290,7 @@
     </set>
     where INST_ACCOUNT_LOG_ID = #{instAccountLogId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.egf.payment.account.dao.entity.EgfAccountInstLogEntity">
+  <update id="updateByPrimaryKey" parameterType="com.egf.payment.account.dao.entity.AccountInstLogEntity">
     update egf_account_inst_log
     set INST_ACCOUNT_NO = #{instAccountNo,jdbcType=VARCHAR},
       TRANS_DATE = #{transDate,jdbcType=VARCHAR},

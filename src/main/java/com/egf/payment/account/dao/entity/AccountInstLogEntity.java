@@ -3,10 +3,10 @@ package com.egf.payment.account.dao.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class EgfAccountLogEntity {
-    private String accountLogId;
+public class AccountInstLogEntity {
+    private String instAccountLogId;
 
-    private String accountNo;
+    private String instAccountNo;
 
     private String transDate;
 
@@ -34,7 +34,7 @@ public class EgfAccountLogEntity {
 
     private String otherAccountType;
 
-    private String instChannel;
+    private String instChannelApi;
 
     private String bankName;
 
@@ -46,28 +46,26 @@ public class EgfAccountLogEntity {
 
     private String outOrderNo;
 
-    private String transType;
+    private String actionType;
 
     private String beyondOrderNo;
 
     private Date createTime;
 
-    private Date updateTime;
-
-    public String getAccountLogId() {
-        return accountLogId;
+    public String getInstAccountLogId() {
+        return instAccountLogId;
     }
 
-    public void setAccountLogId(String accountLogId) {
-        this.accountLogId = accountLogId == null ? null : accountLogId.trim();
+    public void setInstAccountLogId(String instAccountLogId) {
+        this.instAccountLogId = instAccountLogId == null ? null : instAccountLogId.trim();
     }
 
-    public String getAccountNo() {
-        return accountNo;
+    public String getInstAccountNo() {
+        return instAccountNo;
     }
 
-    public void setAccountNo(String accountNo) {
-        this.accountNo = accountNo == null ? null : accountNo.trim();
+    public void setInstAccountNo(String instAccountNo) {
+        this.instAccountNo = instAccountNo == null ? null : instAccountNo.trim();
     }
 
     public String getTransDate() {
@@ -174,12 +172,12 @@ public class EgfAccountLogEntity {
         this.otherAccountType = otherAccountType == null ? null : otherAccountType.trim();
     }
 
-    public String getInstChannel() {
-        return instChannel;
+    public String getInstChannelApi() {
+        return instChannelApi;
     }
 
-    public void setInstChannel(String instChannel) {
-        this.instChannel = instChannel == null ? null : instChannel.trim();
+    public void setInstChannelApi(String instChannelApi) {
+        this.instChannelApi = instChannelApi == null ? null : instChannelApi.trim();
     }
 
     public String getBankName() {
@@ -222,12 +220,12 @@ public class EgfAccountLogEntity {
         this.outOrderNo = outOrderNo == null ? null : outOrderNo.trim();
     }
 
-    public String getTransType() {
-        return transType;
+    public String getActionType() {
+        return actionType;
     }
 
-    public void setTransType(String transType) {
-        this.transType = transType == null ? null : transType.trim();
+    public void setActionType(String actionType) {
+        this.actionType = actionType == null ? null : actionType.trim();
     }
 
     public String getBeyondOrderNo() {
@@ -244,13 +242,5 @@ public class EgfAccountLogEntity {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 }

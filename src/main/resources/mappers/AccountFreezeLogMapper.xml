@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.egf.payment.account.dao.mapper.EgfAccountFreezeLogMapper">
-  <resultMap id="BaseResultMap" type="com.egf.payment.account.dao.entity.EgfAccountFreezeLogEntity">
+<mapper namespace="com.egf.payment.account.dao.mapper.AccountFreezeLogMapper">
+  <resultMap id="BaseResultMap" type="com.egf.payment.account.dao.entity.AccountFreezeLogEntity">
     <id column="FREEZE_ID_LOG" jdbcType="VARCHAR" property="freezeIdLog" />
     <result column="ACCOUNT_NO" jdbcType="VARCHAR" property="accountNo" />
     <result column="OUT_ORDER_NO" jdbcType="VARCHAR" property="outOrderNo" />
@@ -30,7 +30,7 @@
     delete from egf_account_freeze_log
     where FREEZE_ID_LOG = #{freezeIdLog,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.egf.payment.account.dao.entity.EgfAccountFreezeLogEntity">
+  <insert id="insert" parameterType="com.egf.payment.account.dao.entity.AccountFreezeLogEntity">
     insert into egf_account_freeze_log (FREEZE_ID_LOG, ACCOUNT_NO, OUT_ORDER_NO, 
       TRANS_TYPE, AMOUNT, FREEZE_TYPE, 
       TOTAL_FREEZE_AMOUNT, TYPE_FREEZE_AMOUNT, FREEZE_MEMO, 
@@ -42,7 +42,7 @@
       #{beyondOrderNo,jdbcType=VARCHAR}, #{transTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.egf.payment.account.dao.entity.EgfAccountFreezeLogEntity">
+  <insert id="insertSelective" parameterType="com.egf.payment.account.dao.entity.AccountFreezeLogEntity">
     insert into egf_account_freeze_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="freezeIdLog != null">
@@ -127,7 +127,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.egf.payment.account.dao.entity.EgfAccountFreezeLogEntity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.egf.payment.account.dao.entity.AccountFreezeLogEntity">
     update egf_account_freeze_log
     <set>
       <if test="accountNo != null">
@@ -169,7 +169,7 @@
     </set>
     where FREEZE_ID_LOG = #{freezeIdLog,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.egf.payment.account.dao.entity.EgfAccountFreezeLogEntity">
+  <update id="updateByPrimaryKey" parameterType="com.egf.payment.account.dao.entity.AccountFreezeLogEntity">
     update egf_account_freeze_log
     set ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
       OUT_ORDER_NO = #{outOrderNo,jdbcType=VARCHAR},
