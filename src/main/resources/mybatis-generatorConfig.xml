@@ -21,58 +21,58 @@
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-
+		<!-- 生成entity实体类 -->
         <javaModelGenerator targetPackage="com.egf.payment.account.dao.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-
+		<!-- 生成sql mapper.xml配置文件 -->
         <sqlMapGenerator targetPackage="mappers" targetProject="src/main/resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
-
+		<!-- 生成mapper接口 -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.egf.payment.account.dao.mapper"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
         
-        <table schema="egf_account" tableName="egf_account" domainObjectName="AccountEntity"
+        <table schema="egfaccount" tableName="egf_account" domainObjectName="AccountEntity"
                mapperName="AccountMapper"
                enableCountByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false">
         </table>
 
-		<table schema="egf_account" tableName="egf_account_log"
+		<table schema="egfaccount" tableName="egf_account_log"
 			 	domainObjectName="AccountLogEntity" 	
                mapperName="AccountLogMapper"
                enableCountByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false">
         </table>
-        <table schema="egf_account" tableName="egf_account_freeze" domainObjectName="AccountFreezeEntity"
+        <table schema="egfaccount" tableName="egf_account_freeze" domainObjectName="AccountFreezeEntity"
                mapperName="AccountFreezeMapper"
                enableCountByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false">
         </table>
         
-         <table schema="egf_account" tableName="egf_account_freeze_log" domainObjectName="AccountFreezeLogEntity"
+         <table schema="egfaccount" tableName="egf_account_freeze_log" domainObjectName="AccountFreezeLogEntity"
                mapperName="AccountFreezeLogMapper"
                enableCountByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false">
         </table>
         
-         <table schema="egf_account" tableName="egf_account_inst" domainObjectName="AccountInstEntity"
+         <table schema="egfaccount" tableName="egf_account_inst" domainObjectName="AccountInstEntity"
                mapperName="AccountInstMapper"
                enableCountByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false">
         </table>
         
-         <table schema="egf_account" tableName="egf_account_inst_log" domainObjectName="AccountInstLogEntity"
+         <table schema="egfaccount" tableName="egf_account_inst_log" domainObjectName="AccountInstLogEntity"
                mapperName="AccountInstLogMapper"
                enableCountByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"
