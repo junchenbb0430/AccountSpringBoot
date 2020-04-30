@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ehomepay.reconciliation.dao.ClearComfirmMapper">
+  <resultMap id="BaseResultMap" type="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    <id column="PKID" jdbcType="DECIMAL" property="pkid" />
+    <result column="TRANS_ID" jdbcType="DECIMAL" property="transId" />
+    <result column="TRXID" jdbcType="VARCHAR" property="trxid" />
+    <result column="CHANNELID" jdbcType="VARCHAR" property="channelid" />
+    <result column="PAYMENTSEQ" jdbcType="VARCHAR" property="paymentseq" />
+    <result column="CHANNELFLOW" jdbcType="VARCHAR" property="channelflow" />
+    <result column="SYSTEMDATE" jdbcType="TIMESTAMP" property="systemdate" />
+    <result column="FINISHDATE" jdbcType="TIMESTAMP" property="finishdate" />
+    <result column="TRXDIRECTION" jdbcType="VARCHAR" property="trxdirection" />
+    <result column="TRXAMOUNT" jdbcType="DECIMAL" property="trxamount" />
+    <result column="PAYER_ACCOUNTTYPE" jdbcType="VARCHAR" property="payerAccounttype" />
+    <result column="PAYER_ACCOUNTNUM" jdbcType="VARCHAR" property="payerAccountnum" />
+    <result column="PAYER_ACCOUNTNAME" jdbcType="VARCHAR" property="payerAccountname" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="SPBILLDATE" jdbcType="VARCHAR" property="spbilldate" />
+    <result column="SPBILLSTATUS" jdbcType="VARCHAR" property="spbillstatus" />
+    <result column="PAYER_BANKNAME" jdbcType="VARCHAR" property="payerBankname" />
+    <result column="ATTEN_SPBILL" jdbcType="VARCHAR" property="attenSpbill" />
+    <result column="ORDER_TIME" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="TRX_STATUS" jdbcType="VARCHAR" property="trxStatus" />
+    <result column="TRANS_BEGIN_DATE" jdbcType="TIMESTAMP" property="transBeginDate" />
+    <result column="TRANS_TYPE" jdbcType="VARCHAR" property="transType" />
+    <result column="SYSTEM_TYPE" jdbcType="VARCHAR" property="systemType" />
+    <result column="CLEAR_MODE" jdbcType="VARCHAR" property="clearMode" />
+    <result column="INNER_ACCT_NO" jdbcType="VARCHAR" property="innerAcctNo" />
+    <result column="BIZ_TYPE" jdbcType="VARCHAR" property="bizType" />
+    <result column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+    <result column="CLEAR_DATE" jdbcType="TIMESTAMP" property="clearDate" />
+    <result column="CORE_ACCT_TIME" jdbcType="TIMESTAMP" property="coreAcctTime" />
+    <result column="CORE_ACCT_FLOW" jdbcType="VARCHAR" property="coreAcctFlow" />
+    <result column="PARENT_ACCT_NO" jdbcType="VARCHAR" property="parentAcctNo" />
+    <result column="MERCHANT_ACCT_NAME" jdbcType="VARCHAR" property="merchantAcctName" />
+    <result column="EHP_TP_ID_NO" jdbcType="VARCHAR" property="ehpTpIdNo" />
+    <result column="BIZ_CODE" jdbcType="VARCHAR" property="bizCode" />
+    <result column="TRANS_CODE" jdbcType="VARCHAR" property="transCode" />
+    <result column="MERCHANT_CODE" jdbcType="VARCHAR" property="merchantCode" />
+    <result column="BANK_CODE" jdbcType="VARCHAR" property="bankCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PKID, TRANS_ID, TRXID, CHANNELID, PAYMENTSEQ, CHANNELFLOW, SYSTEMDATE, FINISHDATE, 
+    TRXDIRECTION, TRXAMOUNT, PAYER_ACCOUNTTYPE, PAYER_ACCOUNTNUM, PAYER_ACCOUNTNAME, 
+    CREATE_TIME, UPDATE_TIME, REMARK, SPBILLDATE, SPBILLSTATUS, PAYER_BANKNAME, ATTEN_SPBILL, 
+    ORDER_TIME, TRX_STATUS, TRANS_BEGIN_DATE, TRANS_TYPE, SYSTEM_TYPE, CLEAR_MODE, INNER_ACCT_NO, 
+    BIZ_TYPE, ORDER_NO, CLEAR_DATE, CORE_ACCT_TIME, CORE_ACCT_FLOW, PARENT_ACCT_NO, MERCHANT_ACCT_NAME, 
+    EHP_TP_ID_NO, BIZ_CODE, TRANS_CODE, MERCHANT_CODE, BANK_CODE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from LIFT_C.T_CLEAR_COMFIRM
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from LIFT_C.T_CLEAR_COMFIRM
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    insert into LIFT_C.T_CLEAR_COMFIRM (PKID, TRANS_ID, TRXID, 
+      CHANNELID, PAYMENTSEQ, CHANNELFLOW, 
+      SYSTEMDATE, FINISHDATE, TRXDIRECTION, 
+      TRXAMOUNT, PAYER_ACCOUNTTYPE, PAYER_ACCOUNTNUM, 
+      PAYER_ACCOUNTNAME, CREATE_TIME, UPDATE_TIME, 
+      REMARK, SPBILLDATE, SPBILLSTATUS, 
+      PAYER_BANKNAME, ATTEN_SPBILL, ORDER_TIME, 
+      TRX_STATUS, TRANS_BEGIN_DATE, TRANS_TYPE, 
+      SYSTEM_TYPE, CLEAR_MODE, INNER_ACCT_NO, 
+      BIZ_TYPE, ORDER_NO, CLEAR_DATE, 
+      CORE_ACCT_TIME, CORE_ACCT_FLOW, PARENT_ACCT_NO, 
+      MERCHANT_ACCT_NAME, EHP_TP_ID_NO, BIZ_CODE, 
+      TRANS_CODE, MERCHANT_CODE, BANK_CODE
+      )
+    values (#{pkid,jdbcType=DECIMAL}, #{transId,jdbcType=DECIMAL}, #{trxid,jdbcType=VARCHAR}, 
+      #{channelid,jdbcType=VARCHAR}, #{paymentseq,jdbcType=VARCHAR}, #{channelflow,jdbcType=VARCHAR}, 
+      #{systemdate,jdbcType=TIMESTAMP}, #{finishdate,jdbcType=TIMESTAMP}, #{trxdirection,jdbcType=VARCHAR}, 
+      #{trxamount,jdbcType=DECIMAL}, #{payerAccounttype,jdbcType=VARCHAR}, #{payerAccountnum,jdbcType=VARCHAR}, 
+      #{payerAccountname,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{spbilldate,jdbcType=VARCHAR}, #{spbillstatus,jdbcType=VARCHAR}, 
+      #{payerBankname,jdbcType=VARCHAR}, #{attenSpbill,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, 
+      #{trxStatus,jdbcType=VARCHAR}, #{transBeginDate,jdbcType=TIMESTAMP}, #{transType,jdbcType=VARCHAR}, 
+      #{systemType,jdbcType=VARCHAR}, #{clearMode,jdbcType=VARCHAR}, #{innerAcctNo,jdbcType=VARCHAR}, 
+      #{bizType,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, #{clearDate,jdbcType=TIMESTAMP}, 
+      #{coreAcctTime,jdbcType=TIMESTAMP}, #{coreAcctFlow,jdbcType=VARCHAR}, #{parentAcctNo,jdbcType=VARCHAR}, 
+      #{merchantAcctName,jdbcType=VARCHAR}, #{ehpTpIdNo,jdbcType=VARCHAR}, #{bizCode,jdbcType=VARCHAR}, 
+      #{transCode,jdbcType=VARCHAR}, #{merchantCode,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    insert into LIFT_C.T_CLEAR_COMFIRM
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        PKID,
+      </if>
+      <if test="transId != null">
+        TRANS_ID,
+      </if>
+      <if test="trxid != null">
+        TRXID,
+      </if>
+      <if test="channelid != null">
+        CHANNELID,
+      </if>
+      <if test="paymentseq != null">
+        PAYMENTSEQ,
+      </if>
+      <if test="channelflow != null">
+        CHANNELFLOW,
+      </if>
+      <if test="systemdate != null">
+        SYSTEMDATE,
+      </if>
+      <if test="finishdate != null">
+        FINISHDATE,
+      </if>
+      <if test="trxdirection != null">
+        TRXDIRECTION,
+      </if>
+      <if test="trxamount != null">
+        TRXAMOUNT,
+      </if>
+      <if test="payerAccounttype != null">
+        PAYER_ACCOUNTTYPE,
+      </if>
+      <if test="payerAccountnum != null">
+        PAYER_ACCOUNTNUM,
+      </if>
+      <if test="payerAccountname != null">
+        PAYER_ACCOUNTNAME,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="spbilldate != null">
+        SPBILLDATE,
+      </if>
+      <if test="spbillstatus != null">
+        SPBILLSTATUS,
+      </if>
+      <if test="payerBankname != null">
+        PAYER_BANKNAME,
+      </if>
+      <if test="attenSpbill != null">
+        ATTEN_SPBILL,
+      </if>
+      <if test="orderTime != null">
+        ORDER_TIME,
+      </if>
+      <if test="trxStatus != null">
+        TRX_STATUS,
+      </if>
+      <if test="transBeginDate != null">
+        TRANS_BEGIN_DATE,
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE,
+      </if>
+      <if test="systemType != null">
+        SYSTEM_TYPE,
+      </if>
+      <if test="clearMode != null">
+        CLEAR_MODE,
+      </if>
+      <if test="innerAcctNo != null">
+        INNER_ACCT_NO,
+      </if>
+      <if test="bizType != null">
+        BIZ_TYPE,
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO,
+      </if>
+      <if test="clearDate != null">
+        CLEAR_DATE,
+      </if>
+      <if test="coreAcctTime != null">
+        CORE_ACCT_TIME,
+      </if>
+      <if test="coreAcctFlow != null">
+        CORE_ACCT_FLOW,
+      </if>
+      <if test="parentAcctNo != null">
+        PARENT_ACCT_NO,
+      </if>
+      <if test="merchantAcctName != null">
+        MERCHANT_ACCT_NAME,
+      </if>
+      <if test="ehpTpIdNo != null">
+        EHP_TP_ID_NO,
+      </if>
+      <if test="bizCode != null">
+        BIZ_CODE,
+      </if>
+      <if test="transCode != null">
+        TRANS_CODE,
+      </if>
+      <if test="merchantCode != null">
+        MERCHANT_CODE,
+      </if>
+      <if test="bankCode != null">
+        BANK_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        #{pkid,jdbcType=DECIMAL},
+      </if>
+      <if test="transId != null">
+        #{transId,jdbcType=DECIMAL},
+      </if>
+      <if test="trxid != null">
+        #{trxid,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null">
+        #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentseq != null">
+        #{paymentseq,jdbcType=VARCHAR},
+      </if>
+      <if test="channelflow != null">
+        #{channelflow,jdbcType=VARCHAR},
+      </if>
+      <if test="systemdate != null">
+        #{systemdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishdate != null">
+        #{finishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trxdirection != null">
+        #{trxdirection,jdbcType=VARCHAR},
+      </if>
+      <if test="trxamount != null">
+        #{trxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="payerAccounttype != null">
+        #{payerAccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccountnum != null">
+        #{payerAccountnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccountname != null">
+        #{payerAccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="spbilldate != null">
+        #{spbilldate,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillstatus != null">
+        #{spbillstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payerBankname != null">
+        #{payerBankname,jdbcType=VARCHAR},
+      </if>
+      <if test="attenSpbill != null">
+        #{attenSpbill,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trxStatus != null">
+        #{trxStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="transBeginDate != null">
+        #{transBeginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transType != null">
+        #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null">
+        #{systemType,jdbcType=VARCHAR},
+      </if>
+      <if test="clearMode != null">
+        #{clearMode,jdbcType=VARCHAR},
+      </if>
+      <if test="innerAcctNo != null">
+        #{innerAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDate != null">
+        #{clearDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreAcctTime != null">
+        #{coreAcctTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreAcctFlow != null">
+        #{coreAcctFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAcctNo != null">
+        #{parentAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAcctName != null">
+        #{merchantAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="ehpTpIdNo != null">
+        #{ehpTpIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizCode != null">
+        #{bizCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null">
+        #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantCode != null">
+        #{merchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    update LIFT_C.T_CLEAR_COMFIRM
+    <set>
+      <if test="transId != null">
+        TRANS_ID = #{transId,jdbcType=DECIMAL},
+      </if>
+      <if test="trxid != null">
+        TRXID = #{trxid,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null">
+        CHANNELID = #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentseq != null">
+        PAYMENTSEQ = #{paymentseq,jdbcType=VARCHAR},
+      </if>
+      <if test="channelflow != null">
+        CHANNELFLOW = #{channelflow,jdbcType=VARCHAR},
+      </if>
+      <if test="systemdate != null">
+        SYSTEMDATE = #{systemdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishdate != null">
+        FINISHDATE = #{finishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trxdirection != null">
+        TRXDIRECTION = #{trxdirection,jdbcType=VARCHAR},
+      </if>
+      <if test="trxamount != null">
+        TRXAMOUNT = #{trxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="payerAccounttype != null">
+        PAYER_ACCOUNTTYPE = #{payerAccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccountnum != null">
+        PAYER_ACCOUNTNUM = #{payerAccountnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccountname != null">
+        PAYER_ACCOUNTNAME = #{payerAccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="spbilldate != null">
+        SPBILLDATE = #{spbilldate,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillstatus != null">
+        SPBILLSTATUS = #{spbillstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payerBankname != null">
+        PAYER_BANKNAME = #{payerBankname,jdbcType=VARCHAR},
+      </if>
+      <if test="attenSpbill != null">
+        ATTEN_SPBILL = #{attenSpbill,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        ORDER_TIME = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trxStatus != null">
+        TRX_STATUS = #{trxStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="transBeginDate != null">
+        TRANS_BEGIN_DATE = #{transBeginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null">
+        SYSTEM_TYPE = #{systemType,jdbcType=VARCHAR},
+      </if>
+      <if test="clearMode != null">
+        CLEAR_MODE = #{clearMode,jdbcType=VARCHAR},
+      </if>
+      <if test="innerAcctNo != null">
+        INNER_ACCT_NO = #{innerAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDate != null">
+        CLEAR_DATE = #{clearDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreAcctTime != null">
+        CORE_ACCT_TIME = #{coreAcctTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreAcctFlow != null">
+        CORE_ACCT_FLOW = #{coreAcctFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAcctNo != null">
+        PARENT_ACCT_NO = #{parentAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAcctName != null">
+        MERCHANT_ACCT_NAME = #{merchantAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="ehpTpIdNo != null">
+        EHP_TP_ID_NO = #{ehpTpIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizCode != null">
+        BIZ_CODE = #{bizCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null">
+        TRANS_CODE = #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantCode != null">
+        MERCHANT_CODE = #{merchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    update LIFT_C.T_CLEAR_COMFIRM
+    set TRANS_ID = #{transId,jdbcType=DECIMAL},
+      TRXID = #{trxid,jdbcType=VARCHAR},
+      CHANNELID = #{channelid,jdbcType=VARCHAR},
+      PAYMENTSEQ = #{paymentseq,jdbcType=VARCHAR},
+      CHANNELFLOW = #{channelflow,jdbcType=VARCHAR},
+      SYSTEMDATE = #{systemdate,jdbcType=TIMESTAMP},
+      FINISHDATE = #{finishdate,jdbcType=TIMESTAMP},
+      TRXDIRECTION = #{trxdirection,jdbcType=VARCHAR},
+      TRXAMOUNT = #{trxamount,jdbcType=DECIMAL},
+      PAYER_ACCOUNTTYPE = #{payerAccounttype,jdbcType=VARCHAR},
+      PAYER_ACCOUNTNUM = #{payerAccountnum,jdbcType=VARCHAR},
+      PAYER_ACCOUNTNAME = #{payerAccountname,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      SPBILLDATE = #{spbilldate,jdbcType=VARCHAR},
+      SPBILLSTATUS = #{spbillstatus,jdbcType=VARCHAR},
+      PAYER_BANKNAME = #{payerBankname,jdbcType=VARCHAR},
+      ATTEN_SPBILL = #{attenSpbill,jdbcType=VARCHAR},
+      ORDER_TIME = #{orderTime,jdbcType=TIMESTAMP},
+      TRX_STATUS = #{trxStatus,jdbcType=VARCHAR},
+      TRANS_BEGIN_DATE = #{transBeginDate,jdbcType=TIMESTAMP},
+      TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      SYSTEM_TYPE = #{systemType,jdbcType=VARCHAR},
+      CLEAR_MODE = #{clearMode,jdbcType=VARCHAR},
+      INNER_ACCT_NO = #{innerAcctNo,jdbcType=VARCHAR},
+      BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      CLEAR_DATE = #{clearDate,jdbcType=TIMESTAMP},
+      CORE_ACCT_TIME = #{coreAcctTime,jdbcType=TIMESTAMP},
+      CORE_ACCT_FLOW = #{coreAcctFlow,jdbcType=VARCHAR},
+      PARENT_ACCT_NO = #{parentAcctNo,jdbcType=VARCHAR},
+      MERCHANT_ACCT_NAME = #{merchantAcctName,jdbcType=VARCHAR},
+      EHP_TP_ID_NO = #{ehpTpIdNo,jdbcType=VARCHAR},
+      BIZ_CODE = #{bizCode,jdbcType=VARCHAR},
+      TRANS_CODE = #{transCode,jdbcType=VARCHAR},
+      MERCHANT_CODE = #{merchantCode,jdbcType=VARCHAR},
+      BANK_CODE = #{bankCode,jdbcType=VARCHAR}
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    <id column="PKID" jdbcType="DECIMAL" property="pkid" />
+    <result column="TRANS_ID" jdbcType="DECIMAL" property="transId" />
+    <result column="TRXID" jdbcType="VARCHAR" property="trxid" />
+    <result column="CHANNELID" jdbcType="VARCHAR" property="channelid" />
+    <result column="PAYMENTSEQ" jdbcType="VARCHAR" property="paymentseq" />
+    <result column="CHANNELFLOW" jdbcType="VARCHAR" property="channelflow" />
+    <result column="SYSTEMDATE" jdbcType="TIMESTAMP" property="systemdate" />
+    <result column="FINISHDATE" jdbcType="TIMESTAMP" property="finishdate" />
+    <result column="TRXDIRECTION" jdbcType="VARCHAR" property="trxdirection" />
+    <result column="TRXAMOUNT" jdbcType="DECIMAL" property="trxamount" />
+    <result column="PAYER_ACCOUNTTYPE" jdbcType="VARCHAR" property="payerAccounttype" />
+    <result column="PAYER_ACCOUNTNUM" jdbcType="VARCHAR" property="payerAccountnum" />
+    <result column="PAYER_ACCOUNTNAME" jdbcType="VARCHAR" property="payerAccountname" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="SPBILLDATE" jdbcType="VARCHAR" property="spbilldate" />
+    <result column="SPBILLSTATUS" jdbcType="VARCHAR" property="spbillstatus" />
+    <result column="PAYER_BANKNAME" jdbcType="VARCHAR" property="payerBankname" />
+    <result column="ATTEN_SPBILL" jdbcType="VARCHAR" property="attenSpbill" />
+    <result column="ORDER_TIME" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="TRX_STATUS" jdbcType="VARCHAR" property="trxStatus" />
+    <result column="TRANS_BEGIN_DATE" jdbcType="TIMESTAMP" property="transBeginDate" />
+    <result column="TRANS_TYPE" jdbcType="VARCHAR" property="transType" />
+    <result column="SYSTEM_TYPE" jdbcType="VARCHAR" property="systemType" />
+    <result column="CLEAR_MODE" jdbcType="VARCHAR" property="clearMode" />
+    <result column="INNER_ACCT_NO" jdbcType="VARCHAR" property="innerAcctNo" />
+    <result column="BIZ_TYPE" jdbcType="VARCHAR" property="bizType" />
+    <result column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+    <result column="CLEAR_DATE" jdbcType="TIMESTAMP" property="clearDate" />
+    <result column="CORE_ACCT_TIME" jdbcType="TIMESTAMP" property="coreAcctTime" />
+    <result column="CORE_ACCT_FLOW" jdbcType="VARCHAR" property="coreAcctFlow" />
+    <result column="PARENT_ACCT_NO" jdbcType="VARCHAR" property="parentAcctNo" />
+    <result column="MERCHANT_ACCT_NAME" jdbcType="VARCHAR" property="merchantAcctName" />
+    <result column="EHP_TP_ID_NO" jdbcType="VARCHAR" property="ehpTpIdNo" />
+    <result column="BIZ_CODE" jdbcType="VARCHAR" property="bizCode" />
+    <result column="TRANS_CODE" jdbcType="VARCHAR" property="transCode" />
+    <result column="MERCHANT_CODE" jdbcType="VARCHAR" property="merchantCode" />
+    <result column="BANK_CODE" jdbcType="VARCHAR" property="bankCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PKID, TRANS_ID, TRXID, CHANNELID, PAYMENTSEQ, CHANNELFLOW, SYSTEMDATE, FINISHDATE, 
+    TRXDIRECTION, TRXAMOUNT, PAYER_ACCOUNTTYPE, PAYER_ACCOUNTNUM, PAYER_ACCOUNTNAME, 
+    CREATE_TIME, UPDATE_TIME, REMARK, SPBILLDATE, SPBILLSTATUS, PAYER_BANKNAME, ATTEN_SPBILL, 
+    ORDER_TIME, TRX_STATUS, TRANS_BEGIN_DATE, TRANS_TYPE, SYSTEM_TYPE, CLEAR_MODE, INNER_ACCT_NO, 
+    BIZ_TYPE, ORDER_NO, CLEAR_DATE, CORE_ACCT_TIME, CORE_ACCT_FLOW, PARENT_ACCT_NO, MERCHANT_ACCT_NAME, 
+    EHP_TP_ID_NO, BIZ_CODE, TRANS_CODE, MERCHANT_CODE, BANK_CODE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from LIFT_C.T_CLEAR_COMFIRM
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from LIFT_C.T_CLEAR_COMFIRM
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    insert into LIFT_C.T_CLEAR_COMFIRM (PKID, TRANS_ID, TRXID, 
+      CHANNELID, PAYMENTSEQ, CHANNELFLOW, 
+      SYSTEMDATE, FINISHDATE, TRXDIRECTION, 
+      TRXAMOUNT, PAYER_ACCOUNTTYPE, PAYER_ACCOUNTNUM, 
+      PAYER_ACCOUNTNAME, CREATE_TIME, UPDATE_TIME, 
+      REMARK, SPBILLDATE, SPBILLSTATUS, 
+      PAYER_BANKNAME, ATTEN_SPBILL, ORDER_TIME, 
+      TRX_STATUS, TRANS_BEGIN_DATE, TRANS_TYPE, 
+      SYSTEM_TYPE, CLEAR_MODE, INNER_ACCT_NO, 
+      BIZ_TYPE, ORDER_NO, CLEAR_DATE, 
+      CORE_ACCT_TIME, CORE_ACCT_FLOW, PARENT_ACCT_NO, 
+      MERCHANT_ACCT_NAME, EHP_TP_ID_NO, BIZ_CODE, 
+      TRANS_CODE, MERCHANT_CODE, BANK_CODE
+      )
+    values (#{pkid,jdbcType=DECIMAL}, #{transId,jdbcType=DECIMAL}, #{trxid,jdbcType=VARCHAR}, 
+      #{channelid,jdbcType=VARCHAR}, #{paymentseq,jdbcType=VARCHAR}, #{channelflow,jdbcType=VARCHAR}, 
+      #{systemdate,jdbcType=TIMESTAMP}, #{finishdate,jdbcType=TIMESTAMP}, #{trxdirection,jdbcType=VARCHAR}, 
+      #{trxamount,jdbcType=DECIMAL}, #{payerAccounttype,jdbcType=VARCHAR}, #{payerAccountnum,jdbcType=VARCHAR}, 
+      #{payerAccountname,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{spbilldate,jdbcType=VARCHAR}, #{spbillstatus,jdbcType=VARCHAR}, 
+      #{payerBankname,jdbcType=VARCHAR}, #{attenSpbill,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, 
+      #{trxStatus,jdbcType=VARCHAR}, #{transBeginDate,jdbcType=TIMESTAMP}, #{transType,jdbcType=VARCHAR}, 
+      #{systemType,jdbcType=VARCHAR}, #{clearMode,jdbcType=VARCHAR}, #{innerAcctNo,jdbcType=VARCHAR}, 
+      #{bizType,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, #{clearDate,jdbcType=TIMESTAMP}, 
+      #{coreAcctTime,jdbcType=TIMESTAMP}, #{coreAcctFlow,jdbcType=VARCHAR}, #{parentAcctNo,jdbcType=VARCHAR}, 
+      #{merchantAcctName,jdbcType=VARCHAR}, #{ehpTpIdNo,jdbcType=VARCHAR}, #{bizCode,jdbcType=VARCHAR}, 
+      #{transCode,jdbcType=VARCHAR}, #{merchantCode,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    insert into LIFT_C.T_CLEAR_COMFIRM
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        PKID,
+      </if>
+      <if test="transId != null">
+        TRANS_ID,
+      </if>
+      <if test="trxid != null">
+        TRXID,
+      </if>
+      <if test="channelid != null">
+        CHANNELID,
+      </if>
+      <if test="paymentseq != null">
+        PAYMENTSEQ,
+      </if>
+      <if test="channelflow != null">
+        CHANNELFLOW,
+      </if>
+      <if test="systemdate != null">
+        SYSTEMDATE,
+      </if>
+      <if test="finishdate != null">
+        FINISHDATE,
+      </if>
+      <if test="trxdirection != null">
+        TRXDIRECTION,
+      </if>
+      <if test="trxamount != null">
+        TRXAMOUNT,
+      </if>
+      <if test="payerAccounttype != null">
+        PAYER_ACCOUNTTYPE,
+      </if>
+      <if test="payerAccountnum != null">
+        PAYER_ACCOUNTNUM,
+      </if>
+      <if test="payerAccountname != null">
+        PAYER_ACCOUNTNAME,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="spbilldate != null">
+        SPBILLDATE,
+      </if>
+      <if test="spbillstatus != null">
+        SPBILLSTATUS,
+      </if>
+      <if test="payerBankname != null">
+        PAYER_BANKNAME,
+      </if>
+      <if test="attenSpbill != null">
+        ATTEN_SPBILL,
+      </if>
+      <if test="orderTime != null">
+        ORDER_TIME,
+      </if>
+      <if test="trxStatus != null">
+        TRX_STATUS,
+      </if>
+      <if test="transBeginDate != null">
+        TRANS_BEGIN_DATE,
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE,
+      </if>
+      <if test="systemType != null">
+        SYSTEM_TYPE,
+      </if>
+      <if test="clearMode != null">
+        CLEAR_MODE,
+      </if>
+      <if test="innerAcctNo != null">
+        INNER_ACCT_NO,
+      </if>
+      <if test="bizType != null">
+        BIZ_TYPE,
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO,
+      </if>
+      <if test="clearDate != null">
+        CLEAR_DATE,
+      </if>
+      <if test="coreAcctTime != null">
+        CORE_ACCT_TIME,
+      </if>
+      <if test="coreAcctFlow != null">
+        CORE_ACCT_FLOW,
+      </if>
+      <if test="parentAcctNo != null">
+        PARENT_ACCT_NO,
+      </if>
+      <if test="merchantAcctName != null">
+        MERCHANT_ACCT_NAME,
+      </if>
+      <if test="ehpTpIdNo != null">
+        EHP_TP_ID_NO,
+      </if>
+      <if test="bizCode != null">
+        BIZ_CODE,
+      </if>
+      <if test="transCode != null">
+        TRANS_CODE,
+      </if>
+      <if test="merchantCode != null">
+        MERCHANT_CODE,
+      </if>
+      <if test="bankCode != null">
+        BANK_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        #{pkid,jdbcType=DECIMAL},
+      </if>
+      <if test="transId != null">
+        #{transId,jdbcType=DECIMAL},
+      </if>
+      <if test="trxid != null">
+        #{trxid,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null">
+        #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentseq != null">
+        #{paymentseq,jdbcType=VARCHAR},
+      </if>
+      <if test="channelflow != null">
+        #{channelflow,jdbcType=VARCHAR},
+      </if>
+      <if test="systemdate != null">
+        #{systemdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishdate != null">
+        #{finishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trxdirection != null">
+        #{trxdirection,jdbcType=VARCHAR},
+      </if>
+      <if test="trxamount != null">
+        #{trxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="payerAccounttype != null">
+        #{payerAccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccountnum != null">
+        #{payerAccountnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccountname != null">
+        #{payerAccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="spbilldate != null">
+        #{spbilldate,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillstatus != null">
+        #{spbillstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payerBankname != null">
+        #{payerBankname,jdbcType=VARCHAR},
+      </if>
+      <if test="attenSpbill != null">
+        #{attenSpbill,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trxStatus != null">
+        #{trxStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="transBeginDate != null">
+        #{transBeginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transType != null">
+        #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null">
+        #{systemType,jdbcType=VARCHAR},
+      </if>
+      <if test="clearMode != null">
+        #{clearMode,jdbcType=VARCHAR},
+      </if>
+      <if test="innerAcctNo != null">
+        #{innerAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDate != null">
+        #{clearDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreAcctTime != null">
+        #{coreAcctTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreAcctFlow != null">
+        #{coreAcctFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAcctNo != null">
+        #{parentAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAcctName != null">
+        #{merchantAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="ehpTpIdNo != null">
+        #{ehpTpIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizCode != null">
+        #{bizCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null">
+        #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantCode != null">
+        #{merchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    update LIFT_C.T_CLEAR_COMFIRM
+    <set>
+      <if test="transId != null">
+        TRANS_ID = #{transId,jdbcType=DECIMAL},
+      </if>
+      <if test="trxid != null">
+        TRXID = #{trxid,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null">
+        CHANNELID = #{channelid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentseq != null">
+        PAYMENTSEQ = #{paymentseq,jdbcType=VARCHAR},
+      </if>
+      <if test="channelflow != null">
+        CHANNELFLOW = #{channelflow,jdbcType=VARCHAR},
+      </if>
+      <if test="systemdate != null">
+        SYSTEMDATE = #{systemdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishdate != null">
+        FINISHDATE = #{finishdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trxdirection != null">
+        TRXDIRECTION = #{trxdirection,jdbcType=VARCHAR},
+      </if>
+      <if test="trxamount != null">
+        TRXAMOUNT = #{trxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="payerAccounttype != null">
+        PAYER_ACCOUNTTYPE = #{payerAccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccountnum != null">
+        PAYER_ACCOUNTNUM = #{payerAccountnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccountname != null">
+        PAYER_ACCOUNTNAME = #{payerAccountname,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="spbilldate != null">
+        SPBILLDATE = #{spbilldate,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillstatus != null">
+        SPBILLSTATUS = #{spbillstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payerBankname != null">
+        PAYER_BANKNAME = #{payerBankname,jdbcType=VARCHAR},
+      </if>
+      <if test="attenSpbill != null">
+        ATTEN_SPBILL = #{attenSpbill,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        ORDER_TIME = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trxStatus != null">
+        TRX_STATUS = #{trxStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="transBeginDate != null">
+        TRANS_BEGIN_DATE = #{transBeginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null">
+        SYSTEM_TYPE = #{systemType,jdbcType=VARCHAR},
+      </if>
+      <if test="clearMode != null">
+        CLEAR_MODE = #{clearMode,jdbcType=VARCHAR},
+      </if>
+      <if test="innerAcctNo != null">
+        INNER_ACCT_NO = #{innerAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDate != null">
+        CLEAR_DATE = #{clearDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreAcctTime != null">
+        CORE_ACCT_TIME = #{coreAcctTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreAcctFlow != null">
+        CORE_ACCT_FLOW = #{coreAcctFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAcctNo != null">
+        PARENT_ACCT_NO = #{parentAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAcctName != null">
+        MERCHANT_ACCT_NAME = #{merchantAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="ehpTpIdNo != null">
+        EHP_TP_ID_NO = #{ehpTpIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizCode != null">
+        BIZ_CODE = #{bizCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null">
+        TRANS_CODE = #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantCode != null">
+        MERCHANT_CODE = #{merchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehomepay.reconciliation.entity.ClearComfirmEntity">
+    update LIFT_C.T_CLEAR_COMFIRM
+    set TRANS_ID = #{transId,jdbcType=DECIMAL},
+      TRXID = #{trxid,jdbcType=VARCHAR},
+      CHANNELID = #{channelid,jdbcType=VARCHAR},
+      PAYMENTSEQ = #{paymentseq,jdbcType=VARCHAR},
+      CHANNELFLOW = #{channelflow,jdbcType=VARCHAR},
+      SYSTEMDATE = #{systemdate,jdbcType=TIMESTAMP},
+      FINISHDATE = #{finishdate,jdbcType=TIMESTAMP},
+      TRXDIRECTION = #{trxdirection,jdbcType=VARCHAR},
+      TRXAMOUNT = #{trxamount,jdbcType=DECIMAL},
+      PAYER_ACCOUNTTYPE = #{payerAccounttype,jdbcType=VARCHAR},
+      PAYER_ACCOUNTNUM = #{payerAccountnum,jdbcType=VARCHAR},
+      PAYER_ACCOUNTNAME = #{payerAccountname,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      SPBILLDATE = #{spbilldate,jdbcType=VARCHAR},
+      SPBILLSTATUS = #{spbillstatus,jdbcType=VARCHAR},
+      PAYER_BANKNAME = #{payerBankname,jdbcType=VARCHAR},
+      ATTEN_SPBILL = #{attenSpbill,jdbcType=VARCHAR},
+      ORDER_TIME = #{orderTime,jdbcType=TIMESTAMP},
+      TRX_STATUS = #{trxStatus,jdbcType=VARCHAR},
+      TRANS_BEGIN_DATE = #{transBeginDate,jdbcType=TIMESTAMP},
+      TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      SYSTEM_TYPE = #{systemType,jdbcType=VARCHAR},
+      CLEAR_MODE = #{clearMode,jdbcType=VARCHAR},
+      INNER_ACCT_NO = #{innerAcctNo,jdbcType=VARCHAR},
+      BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      CLEAR_DATE = #{clearDate,jdbcType=TIMESTAMP},
+      CORE_ACCT_TIME = #{coreAcctTime,jdbcType=TIMESTAMP},
+      CORE_ACCT_FLOW = #{coreAcctFlow,jdbcType=VARCHAR},
+      PARENT_ACCT_NO = #{parentAcctNo,jdbcType=VARCHAR},
+      MERCHANT_ACCT_NAME = #{merchantAcctName,jdbcType=VARCHAR},
+      EHP_TP_ID_NO = #{ehpTpIdNo,jdbcType=VARCHAR},
+      BIZ_CODE = #{bizCode,jdbcType=VARCHAR},
+      TRANS_CODE = #{transCode,jdbcType=VARCHAR},
+      MERCHANT_CODE = #{merchantCode,jdbcType=VARCHAR},
+      BANK_CODE = #{bankCode,jdbcType=VARCHAR}
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+</mapper>

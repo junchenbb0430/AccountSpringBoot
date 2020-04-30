@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ehomepay.reconciliation.dao.CheckResultDetailMapper">
+  <resultMap id="BaseResultMap" type="com.ehomepay.reconciliation.entity.CheckResultDetailEntity">
+    <id column="PKID" jdbcType="DECIMAL" property="pkid" />
+    <result column="SPBILL_BATCH_ID" jdbcType="VARCHAR" property="spbillBatchId" />
+    <result column="SPBILL_TIME" jdbcType="TIMESTAMP" property="spbillTime" />
+    <result column="TRANS_TIME" jdbcType="TIMESTAMP" property="transTime" />
+    <result column="CHECK_RESULT" jdbcType="VARCHAR" property="checkResult" />
+    <result column="BANK_SEQ" jdbcType="VARCHAR" property="bankSeq" />
+    <result column="TRANS_AMOUNT" jdbcType="DECIMAL" property="transAmount" />
+    <result column="CHANNEL_ID" jdbcType="VARCHAR" property="channelId" />
+    <result column="TRANS_TYPE" jdbcType="VARCHAR" property="transType" />
+    <result column="BIZ_TYPE" jdbcType="VARCHAR" property="bizType" />
+    <result column="TRANS_STATUS" jdbcType="VARCHAR" property="transStatus" />
+    <result column="TRANS_CTY" jdbcType="VARCHAR" property="transCty" />
+    <result column="OPPOSITE_BANK" jdbcType="VARCHAR" property="oppositeBank" />
+    <result column="OPPOSITE_CARD_NO" jdbcType="VARCHAR" property="oppositeCardNo" />
+    <result column="OPPOSITE_NAME" jdbcType="VARCHAR" property="oppositeName" />
+    <result column="CARD_TYPE" jdbcType="VARCHAR" property="cardType" />
+    <result column="FEE_AMOUNT" jdbcType="DECIMAL" property="feeAmount" />
+    <result column="CUSTOMER_NAME" jdbcType="VARCHAR" property="customerName" />
+    <result column="LIFT_TRANS_START_TIME" jdbcType="TIMESTAMP" property="liftTransStartTime" />
+    <result column="LIFT_TRANS_SUC_TIME" jdbcType="TIMESTAMP" property="liftTransSucTime" />
+    <result column="CORE_FLOW" jdbcType="VARCHAR" property="coreFlow" />
+    <result column="FAILURE_REASON" jdbcType="VARCHAR" property="failureReason" />
+    <result column="ACCOUNT_TYPE" jdbcType="VARCHAR" property="accountType" />
+    <result column="ACCOUNT_NO" jdbcType="VARCHAR" property="accountNo" />
+    <result column="MATCH_ID" jdbcType="VARCHAR" property="matchId" />
+    <result column="DEAL_PKID" jdbcType="VARCHAR" property="dealPkid" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="OPERATE_TELLER" jdbcType="VARCHAR" property="operateTeller" />
+    <result column="OPERATE_NAME" jdbcType="VARCHAR" property="operateName" />
+    <result column="ERROR_FLAG" jdbcType="VARCHAR" property="errorFlag" />
+    <result column="CHANNEL_BANK_NAME" jdbcType="VARCHAR" property="channelBankName" />
+    <result column="CHANNEL_CARD_NO" jdbcType="VARCHAR" property="channelCardNo" />
+    <result column="RESPBILL_MSG" jdbcType="VARCHAR" property="respbillMsg" />
+    <result column="SPBILL_RESULT_TYPE" jdbcType="VARCHAR" property="spbillResultType" />
+    <result column="SPBILL_CLEAR_TIME" jdbcType="TIMESTAMP" property="spbillClearTime" />
+    <result column="ERROR_TYPE" jdbcType="VARCHAR" property="errorType" />
+    <result column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+    <result column="CLEAR_DATE" jdbcType="TIMESTAMP" property="clearDate" />
+    <result column="POS_MERCHANT_CODE" jdbcType="VARCHAR" property="posMerchantCode" />
+    <result column="TRANS_BANK_SEQ" jdbcType="VARCHAR" property="transBankSeq" />
+    <result column="PAYMENT_SEQ" jdbcType="VARCHAR" property="paymentSeq" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PKID, SPBILL_BATCH_ID, SPBILL_TIME, TRANS_TIME, CHECK_RESULT, BANK_SEQ, TRANS_AMOUNT, 
+    CHANNEL_ID, TRANS_TYPE, BIZ_TYPE, TRANS_STATUS, TRANS_CTY, OPPOSITE_BANK, OPPOSITE_CARD_NO, 
+    OPPOSITE_NAME, CARD_TYPE, FEE_AMOUNT, CUSTOMER_NAME, LIFT_TRANS_START_TIME, LIFT_TRANS_SUC_TIME, 
+    CORE_FLOW, FAILURE_REASON, ACCOUNT_TYPE, ACCOUNT_NO, MATCH_ID, DEAL_PKID, REMARK, 
+    CREATE_TIME, UPDATE_TIME, OPERATE_TELLER, OPERATE_NAME, ERROR_FLAG, CHANNEL_BANK_NAME, 
+    CHANNEL_CARD_NO, RESPBILL_MSG, SPBILL_RESULT_TYPE, SPBILL_CLEAR_TIME, ERROR_TYPE, 
+    ORDER_NO, CLEAR_DATE, POS_MERCHANT_CODE, TRANS_BANK_SEQ, PAYMENT_SEQ
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from LIFT_C.T_CHECK_RESULT_DETAIL
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+    delete from LIFT_C.T_CHECK_RESULT_DETAIL
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ehomepay.reconciliation.entity.CheckResultDetailEntity">
+    insert into LIFT_C.T_CHECK_RESULT_DETAIL (PKID, SPBILL_BATCH_ID, SPBILL_TIME, 
+      TRANS_TIME, CHECK_RESULT, BANK_SEQ, 
+      TRANS_AMOUNT, CHANNEL_ID, TRANS_TYPE, 
+      BIZ_TYPE, TRANS_STATUS, TRANS_CTY, 
+      OPPOSITE_BANK, OPPOSITE_CARD_NO, OPPOSITE_NAME, 
+      CARD_TYPE, FEE_AMOUNT, CUSTOMER_NAME, 
+      LIFT_TRANS_START_TIME, LIFT_TRANS_SUC_TIME, 
+      CORE_FLOW, FAILURE_REASON, ACCOUNT_TYPE, 
+      ACCOUNT_NO, MATCH_ID, DEAL_PKID, 
+      REMARK, CREATE_TIME, UPDATE_TIME, 
+      OPERATE_TELLER, OPERATE_NAME, ERROR_FLAG, 
+      CHANNEL_BANK_NAME, CHANNEL_CARD_NO, RESPBILL_MSG, 
+      SPBILL_RESULT_TYPE, SPBILL_CLEAR_TIME, ERROR_TYPE, 
+      ORDER_NO, CLEAR_DATE, POS_MERCHANT_CODE, 
+      TRANS_BANK_SEQ, PAYMENT_SEQ)
+    values (#{pkid,jdbcType=DECIMAL}, #{spbillBatchId,jdbcType=VARCHAR}, #{spbillTime,jdbcType=TIMESTAMP}, 
+      #{transTime,jdbcType=TIMESTAMP}, #{checkResult,jdbcType=VARCHAR}, #{bankSeq,jdbcType=VARCHAR}, 
+      #{transAmount,jdbcType=DECIMAL}, #{channelId,jdbcType=VARCHAR}, #{transType,jdbcType=VARCHAR}, 
+      #{bizType,jdbcType=VARCHAR}, #{transStatus,jdbcType=VARCHAR}, #{transCty,jdbcType=VARCHAR}, 
+      #{oppositeBank,jdbcType=VARCHAR}, #{oppositeCardNo,jdbcType=VARCHAR}, #{oppositeName,jdbcType=VARCHAR}, 
+      #{cardType,jdbcType=VARCHAR}, #{feeAmount,jdbcType=DECIMAL}, #{customerName,jdbcType=VARCHAR}, 
+      #{liftTransStartTime,jdbcType=TIMESTAMP}, #{liftTransSucTime,jdbcType=TIMESTAMP}, 
+      #{coreFlow,jdbcType=VARCHAR}, #{failureReason,jdbcType=VARCHAR}, #{accountType,jdbcType=VARCHAR}, 
+      #{accountNo,jdbcType=VARCHAR}, #{matchId,jdbcType=VARCHAR}, #{dealPkid,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{operateTeller,jdbcType=VARCHAR}, #{operateName,jdbcType=VARCHAR}, #{errorFlag,jdbcType=VARCHAR}, 
+      #{channelBankName,jdbcType=VARCHAR}, #{channelCardNo,jdbcType=VARCHAR}, #{respbillMsg,jdbcType=VARCHAR}, 
+      #{spbillResultType,jdbcType=VARCHAR}, #{spbillClearTime,jdbcType=TIMESTAMP}, #{errorType,jdbcType=VARCHAR}, 
+      #{orderNo,jdbcType=VARCHAR}, #{clearDate,jdbcType=TIMESTAMP}, #{posMerchantCode,jdbcType=VARCHAR}, 
+      #{transBankSeq,jdbcType=VARCHAR}, #{paymentSeq,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehomepay.reconciliation.entity.CheckResultDetailEntity">
+    insert into LIFT_C.T_CHECK_RESULT_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        PKID,
+      </if>
+      <if test="spbillBatchId != null">
+        SPBILL_BATCH_ID,
+      </if>
+      <if test="spbillTime != null">
+        SPBILL_TIME,
+      </if>
+      <if test="transTime != null">
+        TRANS_TIME,
+      </if>
+      <if test="checkResult != null">
+        CHECK_RESULT,
+      </if>
+      <if test="bankSeq != null">
+        BANK_SEQ,
+      </if>
+      <if test="transAmount != null">
+        TRANS_AMOUNT,
+      </if>
+      <if test="channelId != null">
+        CHANNEL_ID,
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE,
+      </if>
+      <if test="bizType != null">
+        BIZ_TYPE,
+      </if>
+      <if test="transStatus != null">
+        TRANS_STATUS,
+      </if>
+      <if test="transCty != null">
+        TRANS_CTY,
+      </if>
+      <if test="oppositeBank != null">
+        OPPOSITE_BANK,
+      </if>
+      <if test="oppositeCardNo != null">
+        OPPOSITE_CARD_NO,
+      </if>
+      <if test="oppositeName != null">
+        OPPOSITE_NAME,
+      </if>
+      <if test="cardType != null">
+        CARD_TYPE,
+      </if>
+      <if test="feeAmount != null">
+        FEE_AMOUNT,
+      </if>
+      <if test="customerName != null">
+        CUSTOMER_NAME,
+      </if>
+      <if test="liftTransStartTime != null">
+        LIFT_TRANS_START_TIME,
+      </if>
+      <if test="liftTransSucTime != null">
+        LIFT_TRANS_SUC_TIME,
+      </if>
+      <if test="coreFlow != null">
+        CORE_FLOW,
+      </if>
+      <if test="failureReason != null">
+        FAILURE_REASON,
+      </if>
+      <if test="accountType != null">
+        ACCOUNT_TYPE,
+      </if>
+      <if test="accountNo != null">
+        ACCOUNT_NO,
+      </if>
+      <if test="matchId != null">
+        MATCH_ID,
+      </if>
+      <if test="dealPkid != null">
+        DEAL_PKID,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="operateTeller != null">
+        OPERATE_TELLER,
+      </if>
+      <if test="operateName != null">
+        OPERATE_NAME,
+      </if>
+      <if test="errorFlag != null">
+        ERROR_FLAG,
+      </if>
+      <if test="channelBankName != null">
+        CHANNEL_BANK_NAME,
+      </if>
+      <if test="channelCardNo != null">
+        CHANNEL_CARD_NO,
+      </if>
+      <if test="respbillMsg != null">
+        RESPBILL_MSG,
+      </if>
+      <if test="spbillResultType != null">
+        SPBILL_RESULT_TYPE,
+      </if>
+      <if test="spbillClearTime != null">
+        SPBILL_CLEAR_TIME,
+      </if>
+      <if test="errorType != null">
+        ERROR_TYPE,
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO,
+      </if>
+      <if test="clearDate != null">
+        CLEAR_DATE,
+      </if>
+      <if test="posMerchantCode != null">
+        POS_MERCHANT_CODE,
+      </if>
+      <if test="transBankSeq != null">
+        TRANS_BANK_SEQ,
+      </if>
+      <if test="paymentSeq != null">
+        PAYMENT_SEQ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        #{pkid,jdbcType=DECIMAL},
+      </if>
+      <if test="spbillBatchId != null">
+        #{spbillBatchId,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillTime != null">
+        #{spbillTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTime != null">
+        #{transTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkResult != null">
+        #{checkResult,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSeq != null">
+        #{bankSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmount != null">
+        #{transAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="transStatus != null">
+        #{transStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="transCty != null">
+        #{transCty,jdbcType=VARCHAR},
+      </if>
+      <if test="oppositeBank != null">
+        #{oppositeBank,jdbcType=VARCHAR},
+      </if>
+      <if test="oppositeCardNo != null">
+        #{oppositeCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oppositeName != null">
+        #{oppositeName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmount != null">
+        #{feeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="liftTransStartTime != null">
+        #{liftTransStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="liftTransSucTime != null">
+        #{liftTransSucTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreFlow != null">
+        #{coreFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="failureReason != null">
+        #{failureReason,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null">
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null">
+        #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="matchId != null">
+        #{matchId,jdbcType=VARCHAR},
+      </if>
+      <if test="dealPkid != null">
+        #{dealPkid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTeller != null">
+        #{operateTeller,jdbcType=VARCHAR},
+      </if>
+      <if test="operateName != null">
+        #{operateName,jdbcType=VARCHAR},
+      </if>
+      <if test="errorFlag != null">
+        #{errorFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="channelBankName != null">
+        #{channelBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCardNo != null">
+        #{channelCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="respbillMsg != null">
+        #{respbillMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillResultType != null">
+        #{spbillResultType,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillClearTime != null">
+        #{spbillClearTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorType != null">
+        #{errorType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDate != null">
+        #{clearDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="posMerchantCode != null">
+        #{posMerchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transBankSeq != null">
+        #{transBankSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentSeq != null">
+        #{paymentSeq,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehomepay.reconciliation.entity.CheckResultDetailEntity">
+    update LIFT_C.T_CHECK_RESULT_DETAIL
+    <set>
+      <if test="spbillBatchId != null">
+        SPBILL_BATCH_ID = #{spbillBatchId,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillTime != null">
+        SPBILL_TIME = #{spbillTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTime != null">
+        TRANS_TIME = #{transTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkResult != null">
+        CHECK_RESULT = #{checkResult,jdbcType=VARCHAR},
+      </if>
+      <if test="bankSeq != null">
+        BANK_SEQ = #{bankSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmount != null">
+        TRANS_AMOUNT = #{transAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="channelId != null">
+        CHANNEL_ID = #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="transStatus != null">
+        TRANS_STATUS = #{transStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="transCty != null">
+        TRANS_CTY = #{transCty,jdbcType=VARCHAR},
+      </if>
+      <if test="oppositeBank != null">
+        OPPOSITE_BANK = #{oppositeBank,jdbcType=VARCHAR},
+      </if>
+      <if test="oppositeCardNo != null">
+        OPPOSITE_CARD_NO = #{oppositeCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oppositeName != null">
+        OPPOSITE_NAME = #{oppositeName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        CARD_TYPE = #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="feeAmount != null">
+        FEE_AMOUNT = #{feeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="customerName != null">
+        CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="liftTransStartTime != null">
+        LIFT_TRANS_START_TIME = #{liftTransStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="liftTransSucTime != null">
+        LIFT_TRANS_SUC_TIME = #{liftTransSucTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coreFlow != null">
+        CORE_FLOW = #{coreFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="failureReason != null">
+        FAILURE_REASON = #{failureReason,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null">
+        ACCOUNT_TYPE = #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null">
+        ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="matchId != null">
+        MATCH_ID = #{matchId,jdbcType=VARCHAR},
+      </if>
+      <if test="dealPkid != null">
+        DEAL_PKID = #{dealPkid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTeller != null">
+        OPERATE_TELLER = #{operateTeller,jdbcType=VARCHAR},
+      </if>
+      <if test="operateName != null">
+        OPERATE_NAME = #{operateName,jdbcType=VARCHAR},
+      </if>
+      <if test="errorFlag != null">
+        ERROR_FLAG = #{errorFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="channelBankName != null">
+        CHANNEL_BANK_NAME = #{channelBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCardNo != null">
+        CHANNEL_CARD_NO = #{channelCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="respbillMsg != null">
+        RESPBILL_MSG = #{respbillMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillResultType != null">
+        SPBILL_RESULT_TYPE = #{spbillResultType,jdbcType=VARCHAR},
+      </if>
+      <if test="spbillClearTime != null">
+        SPBILL_CLEAR_TIME = #{spbillClearTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorType != null">
+        ERROR_TYPE = #{errorType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clearDate != null">
+        CLEAR_DATE = #{clearDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="posMerchantCode != null">
+        POS_MERCHANT_CODE = #{posMerchantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transBankSeq != null">
+        TRANS_BANK_SEQ = #{transBankSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentSeq != null">
+        PAYMENT_SEQ = #{paymentSeq,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehomepay.reconciliation.entity.CheckResultDetailEntity">
+    update LIFT_C.T_CHECK_RESULT_DETAIL
+    set SPBILL_BATCH_ID = #{spbillBatchId,jdbcType=VARCHAR},
+      SPBILL_TIME = #{spbillTime,jdbcType=TIMESTAMP},
+      TRANS_TIME = #{transTime,jdbcType=TIMESTAMP},
+      CHECK_RESULT = #{checkResult,jdbcType=VARCHAR},
+      BANK_SEQ = #{bankSeq,jdbcType=VARCHAR},
+      TRANS_AMOUNT = #{transAmount,jdbcType=DECIMAL},
+      CHANNEL_ID = #{channelId,jdbcType=VARCHAR},
+      TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+      TRANS_STATUS = #{transStatus,jdbcType=VARCHAR},
+      TRANS_CTY = #{transCty,jdbcType=VARCHAR},
+      OPPOSITE_BANK = #{oppositeBank,jdbcType=VARCHAR},
+      OPPOSITE_CARD_NO = #{oppositeCardNo,jdbcType=VARCHAR},
+      OPPOSITE_NAME = #{oppositeName,jdbcType=VARCHAR},
+      CARD_TYPE = #{cardType,jdbcType=VARCHAR},
+      FEE_AMOUNT = #{feeAmount,jdbcType=DECIMAL},
+      CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      LIFT_TRANS_START_TIME = #{liftTransStartTime,jdbcType=TIMESTAMP},
+      LIFT_TRANS_SUC_TIME = #{liftTransSucTime,jdbcType=TIMESTAMP},
+      CORE_FLOW = #{coreFlow,jdbcType=VARCHAR},
+      FAILURE_REASON = #{failureReason,jdbcType=VARCHAR},
+      ACCOUNT_TYPE = #{accountType,jdbcType=VARCHAR},
+      ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+      MATCH_ID = #{matchId,jdbcType=VARCHAR},
+      DEAL_PKID = #{dealPkid,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      OPERATE_TELLER = #{operateTeller,jdbcType=VARCHAR},
+      OPERATE_NAME = #{operateName,jdbcType=VARCHAR},
+      ERROR_FLAG = #{errorFlag,jdbcType=VARCHAR},
+      CHANNEL_BANK_NAME = #{channelBankName,jdbcType=VARCHAR},
+      CHANNEL_CARD_NO = #{channelCardNo,jdbcType=VARCHAR},
+      RESPBILL_MSG = #{respbillMsg,jdbcType=VARCHAR},
+      SPBILL_RESULT_TYPE = #{spbillResultType,jdbcType=VARCHAR},
+      SPBILL_CLEAR_TIME = #{spbillClearTime,jdbcType=TIMESTAMP},
+      ERROR_TYPE = #{errorType,jdbcType=VARCHAR},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      CLEAR_DATE = #{clearDate,jdbcType=TIMESTAMP},
+      POS_MERCHANT_CODE = #{posMerchantCode,jdbcType=VARCHAR},
+      TRANS_BANK_SEQ = #{transBankSeq,jdbcType=VARCHAR},
+      PAYMENT_SEQ = #{paymentSeq,jdbcType=VARCHAR}
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+</mapper>

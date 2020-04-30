@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ehomepay.reconciliation.dao.CheckUnfiedEpccTransMapper">
+  <resultMap id="BaseResultMap" type="com.ehomepay.reconciliation.entity.CheckUnfiedEpccTransEntity">
+    <id column="PKID" jdbcType="DECIMAL" property="pkid" />
+    <result column="TRANS_DATE" jdbcType="TIMESTAMP" property="transDate" />
+    <result column="CHANNEL_FLOW" jdbcType="VARCHAR" property="channelFlow" />
+    <result column="PAYMENT_SEQ" jdbcType="VARCHAR" property="paymentSeq" />
+    <result column="CHANNEL_ID" jdbcType="VARCHAR" property="channelId" />
+    <result column="TRANS_TYPE" jdbcType="VARCHAR" property="transType" />
+    <result column="TRX_ID" jdbcType="VARCHAR" property="trxId" />
+    <result column="ACCT_NAME" jdbcType="VARCHAR" property="acctName" />
+    <result column="ACCT_NO" jdbcType="VARCHAR" property="acctNo" />
+    <result column="TRANS_FLOW_TYPE" jdbcType="VARCHAR" property="transFlowType" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PKID, TRANS_DATE, CHANNEL_FLOW, PAYMENT_SEQ, CHANNEL_ID, TRANS_TYPE, TRX_ID, ACCT_NAME, 
+    ACCT_NO, TRANS_FLOW_TYPE, CREATE_TIME, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from LIFT_C.T_CHECK_UNIFIED_EPCC_TRANS
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+    delete from LIFT_C.T_CHECK_UNIFIED_EPCC_TRANS
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ehomepay.reconciliation.entity.CheckUnfiedEpccTransEntity">
+    insert into LIFT_C.T_CHECK_UNIFIED_EPCC_TRANS (PKID, TRANS_DATE, CHANNEL_FLOW, 
+      PAYMENT_SEQ, CHANNEL_ID, TRANS_TYPE, 
+      TRX_ID, ACCT_NAME, ACCT_NO, 
+      TRANS_FLOW_TYPE, CREATE_TIME, UPDATE_TIME
+      )
+    values (#{pkid,jdbcType=DECIMAL}, #{transDate,jdbcType=TIMESTAMP}, #{channelFlow,jdbcType=VARCHAR}, 
+      #{paymentSeq,jdbcType=VARCHAR}, #{channelId,jdbcType=VARCHAR}, #{transType,jdbcType=VARCHAR}, 
+      #{trxId,jdbcType=VARCHAR}, #{acctName,jdbcType=VARCHAR}, #{acctNo,jdbcType=VARCHAR}, 
+      #{transFlowType,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehomepay.reconciliation.entity.CheckUnfiedEpccTransEntity">
+    insert into LIFT_C.T_CHECK_UNIFIED_EPCC_TRANS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        PKID,
+      </if>
+      <if test="transDate != null">
+        TRANS_DATE,
+      </if>
+      <if test="channelFlow != null">
+        CHANNEL_FLOW,
+      </if>
+      <if test="paymentSeq != null">
+        PAYMENT_SEQ,
+      </if>
+      <if test="channelId != null">
+        CHANNEL_ID,
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE,
+      </if>
+      <if test="trxId != null">
+        TRX_ID,
+      </if>
+      <if test="acctName != null">
+        ACCT_NAME,
+      </if>
+      <if test="acctNo != null">
+        ACCT_NO,
+      </if>
+      <if test="transFlowType != null">
+        TRANS_FLOW_TYPE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkid != null">
+        #{pkid,jdbcType=DECIMAL},
+      </if>
+      <if test="transDate != null">
+        #{transDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="channelFlow != null">
+        #{channelFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentSeq != null">
+        #{paymentSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="trxId != null">
+        #{trxId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctName != null">
+        #{acctName,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null">
+        #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transFlowType != null">
+        #{transFlowType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehomepay.reconciliation.entity.CheckUnfiedEpccTransEntity">
+    update LIFT_C.T_CHECK_UNIFIED_EPCC_TRANS
+    <set>
+      <if test="transDate != null">
+        TRANS_DATE = #{transDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="channelFlow != null">
+        CHANNEL_FLOW = #{channelFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentSeq != null">
+        PAYMENT_SEQ = #{paymentSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null">
+        CHANNEL_ID = #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="trxId != null">
+        TRX_ID = #{trxId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctName != null">
+        ACCT_NAME = #{acctName,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null">
+        ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transFlowType != null">
+        TRANS_FLOW_TYPE = #{transFlowType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehomepay.reconciliation.entity.CheckUnfiedEpccTransEntity">
+    update LIFT_C.T_CHECK_UNIFIED_EPCC_TRANS
+    set TRANS_DATE = #{transDate,jdbcType=TIMESTAMP},
+      CHANNEL_FLOW = #{channelFlow,jdbcType=VARCHAR},
+      PAYMENT_SEQ = #{paymentSeq,jdbcType=VARCHAR},
+      CHANNEL_ID = #{channelId,jdbcType=VARCHAR},
+      TRANS_TYPE = #{transType,jdbcType=VARCHAR},
+      TRX_ID = #{trxId,jdbcType=VARCHAR},
+      ACCT_NAME = #{acctName,jdbcType=VARCHAR},
+      ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      TRANS_FLOW_TYPE = #{transFlowType,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+</mapper>
